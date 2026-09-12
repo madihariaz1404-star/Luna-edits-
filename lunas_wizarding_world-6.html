@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luna's Wizarding World</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=MedievalSharp&family=Montserrat:wght@400;600;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#070611;
+  color:#f4edcf;
+  font-family:Montserrat,Arial,sans-serif;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.18;
+  background-image:radial-gradient(#fff 1px,transparent 1px);
+  background-size:55px 55px;
+}
+header{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:40px 20px;position:relative;overflow:hidden;
+  background:
+   radial-gradient(circle at 50% 35%,rgba(116,86,181,.3),transparent 30%),
+   linear-gradient(180deg,#100d25 0%,#080714 70%,#05040b 100%);
+}
+.moon{position:absolute;width:230px;height:230px;border-radius:50%;background:#f8efc9;right:9%;top:10%;box-shadow:0 0 80px rgba(255,245,180,.35)}
+.moon:after{content:"";position:absolute;width:230px;height:230px;border-radius:50%;background:#100d25;left:45px;top:-15px}
+.hero{position:relative;z-index:2;max-width:900px}
+.eyebrow{letter-spacing:6px;text-transform:uppercase;font-size:12px;color:#c9a85d;margin-bottom:20px}
+h1{
+  font-family:Cinzel,serif;font-size:clamp(45px,8vw,90px);line-height:1.05;
+  text-shadow:0 0 25px rgba(217,185,91,.25);
+}
+.hero p{max-width:650px;margin:25px auto;color:#c9c5d8;line-height:1.8}
+.btn{
+ display:inline-block;padding:13px 24px;border:1px solid #b99952;border-radius:30px;
+ color:#f7eac2;text-decoration:none;margin:8px;font-weight:700;transition:.25s;
+ background:rgba(185,153,82,.08)
+}
+.btn:hover{background:#b99952;color:#090710;transform:translateY(-2px)}
+.wand{font-size:42px;margin-bottom:18px;animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px) rotate(-4deg)}}
+
+nav{
+ position:sticky;top:0;z-index:50;background:rgba(8,7,17,.9);backdrop-filter:blur(12px);
+ border-bottom:1px solid rgba(201,168,93,.25);display:flex;justify-content:center;gap:25px;
+ padding:15px 10px;flex-wrap:wrap
+}
+nav a{color:#d9d3bc;text-decoration:none;font-size:13px;font-weight:700}
+nav a:hover{color:#d7b761}
+
+section{padding:85px 7%;max-width:1250px;margin:auto}
+.section-title{text-align:center;margin-bottom:45px}
+.section-title h2{font-family:Cinzel,serif;font-size:36px;color:#e7cc8b}
+.section-title p{color:#9d99ad;margin-top:10px}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px}
+.card{
+ background:linear-gradient(145deg,#151226,#0d0b18);border:1px solid rgba(201,168,93,.2);
+ padding:26px;border-radius:18px;transition:.3s;position:relative;overflow:hidden
+}
+.card:hover{transform:translateY(-7px);border-color:#b99952;box-shadow:0 15px 40px rgba(0,0,0,.35)}
+.card .icon{font-size:45px;margin-bottom:15px}
+.card h3{font-family:Cinzel,serif;color:#e4c77e;margin-bottom:8px}
+.card p{color:#aaa6b7;font-size:14px;line-height:1.7}
+
+.houses{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.house{padding:30px;text-align:center}
+.house b{display:block;font-family:Cinzel,serif;font-size:19px;margin:12px 0;color:#e7cc8b}
+.house span{font-size:12px;color:#aaa6b7}
+
+.quiz{max-width:720px;margin:auto;background:#111020;border:1px solid #312c48;border-radius:22px;padding:30px}
+.question{font-family:Cinzel,serif;font-size:22px;margin-bottom:20px;text-align:center}
+.options{display:grid;gap:10px}
+.option{background:#1a172b;color:#eee7d0;border:1px solid #38324e;padding:14px;border-radius:12px;cursor:pointer;text-align:left}
+.option:hover{border-color:#c9a85d}
+#result{text-align:center;margin-top:22px;font-family:Cinzel,serif;font-size:24px;color:#e7cc8b;min-height:30px}
+
+.spells{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:15px}
+.spell{padding:20px;border-left:3px solid #b99952;background:#111020;border-radius:10px}
+.spell strong{color:#e5ca85;font-family:Cinzel,serif}
+.spell small{display:block;color:#9e9aaa;margin-top:6px}
+
+footer{text-align:center;padding:45px 20px;border-top:1px solid #28243a;color:#777487}
+footer strong{color:#c9a85d}
+</style>
+</head>
+<body>
+
+<header id="home">
+  <div class="moon"></div>
+  <div class="hero">
+    <div class="wand">🪄</div>
+    <div class="eyebrow">Welcome, young witch or wizard</div>
+    <h1>Luna's Wizarding World</h1>
+    <p>Step beyond the ordinary and explore a magical fan-made corner filled with Hogwarts houses, characters, spells, and a little bit of wizarding wonder.</p>
+    <a class="btn" href="#characters">Explore the Magic</a>
+    <a class="btn" href="#quiz">Find Your House</a>
+  </div>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#characters">Characters</a>
+  <a href="#houses">Houses</a>
+  <a href="#spells">Spells</a>
+  <a href="#quiz">House Quiz</a>
+  <a href="#edits">Edits</a>
+</nav>
+
+<section id="characters">
+  <div class="section-title">
+    <h2>✨ The Golden Trio</h2>
+    <p>The friends who made every adventure unforgettable.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="icon">⚡</div><h3>Harry Potter</h3><p>The brave young wizard whose courage helped him face extraordinary challenges.</p></div>
+    <div class="card"><div class="icon">📚</div><h3>Hermione Granger</h3><p>Brilliant, determined and loyal — a witch who proves that knowledge is powerful.</p></div>
+    <div class="card"><div class="icon">♟️</div><h3>Ron Weasley</h3><p>A loyal friend with a huge heart, quick humour and plenty of courage.</p></div>
+  </div>
+</section>
+
+<section id="houses">
+  <div class="section-title">
+    <h2>🏰 Hogwarts Houses</h2>
+    <p>Which house feels like home?</p>
+  </div>
+  <div class="cards houses">
+    <div class="card house"><div class="icon">🦁</div><b>Gryffindor</b><span>Bravery • Courage • Nerve</span></div>
+    <div class="card house"><div class="icon">🐍</div><b>Slytherin</b><span>Ambition • Cunning • Determination</span></div>
+    <div class="card house"><div class="icon">🦅</div><b>Ravenclaw</b><span>Wisdom • Curiosity • Creativity</span></div>
+    <div class="card house"><div class="icon">🦡</div><b>Hufflepuff</b><span>Loyalty • Patience • Kindness</span></div>
+  </div>
+</section>
+
+<section id="spells">
+  <div class="section-title">
+    <h2>🪄 Spellbook</h2>
+    <p>A tiny collection for your magical journey.</p>
+  </div>
+  <div class="spells">
+    <div class="spell"><strong>Lumos</strong><small>A light-producing charm.</small></div>
+    <div class="spell"><strong>Accio</strong><small>A summoning charm.</small></div>
+    <div class="spell"><strong>Alohomora</strong><small>A charm associated with opening locks.</small></div>
+    <div class="spell"><strong>Expecto Patronum</strong><small>A powerful protective charm.</small></div>
+    <div class="spell"><strong>Wingardium Leviosa</strong><small>A charm for making objects float.</small></div>
+    <div class="spell"><strong>Protego</strong><small>A shielding charm.</small></div>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="section-title">
+    <h2>🎩 Sorting Quiz</h2>
+    <p>Choose what sounds most like you.</p>
+  </div>
+  <div class="quiz">
+    <div class="question">What quality do you value most?</div>
+    <div class="options">
+      <button class="option" onclick="sortHouse('Gryffindor')">🦁 Courage</button>
+      <button class="option" onclick="sortHouse('Slytherin')">🐍 Ambition</button>
+      <button class="option" onclick="sortHouse('Ravenclaw')">🦅 Wisdom</button>
+      <button class="option" onclick="sortHouse('Hufflepuff')">🦡 Loyalty</button>
+    </div>
+    <div id="result"></div>
+  </div>
+</section>
+
+<section id="edits">
+  <div class="section-title">
+    <h2>🎬 Luna's Edits</h2>
+    <p>Your place for magical edit ideas.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="icon">⚡</div><h3>Golden Trio</h3><p>Start with three quick character shots, then transition into a friendship montage.</p></div>
+    <div class="card"><div class="icon">🌙</div><h3>Dark Academia</h3><p>Try slow transitions, castle imagery, mysterious text and a cinematic atmosphere.</p></div>
+    <div class="card"><div class="icon">✨</div><h3>Character Edit</h3><p>Pick one character and build an edit around their personality, friendships and journey.</p></div>
+  </div>
+</section>
+
+<footer>
+  <p>Made with 🪄 for <strong>Luna's Wizarding World</strong></p>
+  <p style="margin-top:8px;font-size:12px">Fan-made project • Not an official Harry Potter website</p>
+</footer>
+
+<script>
+function sortHouse(house){
+  const messages={
+    Gryffindor:"🦁 The Sorting Hat says... GRYFFINDOR!",
+    Slytherin:"🐍 The Sorting Hat says... SLYTHERIN!",
+    Ravenclaw:"🦅 The Sorting Hat says... RAVENCLAW!",
+    Hufflepuff:"🦡 The Sorting Hat says... HUFFLEPUFF!"
+  };
+  document.getElementById("result").textContent=messages[house];
+}
+</script>
+</body>
+</html>
